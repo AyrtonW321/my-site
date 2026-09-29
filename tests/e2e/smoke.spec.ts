@@ -2,7 +2,7 @@ import { expect, test } from '@playwright/test'
 
 const routes: [path: string, h1: string][] = [
   ['/', 'Ayrton Wong.'],
-  ['/projects', 'Projects'],
+  ['/projects', "Things I've built."],
   ['/experience', 'Experience'],
   ['/projects/uw-course-planner', 'UW Course Planner'],
   ['/projects/does-not-exist', 'Nothing here.'],
@@ -111,4 +111,15 @@ test('each page sets one title and one description', async ({ page }) => {
   await expect(page.locator('head title')).toHaveCount(1)
   await expect(page.locator('meta[name="description"]')).toHaveCount(1)
   await expect(page.locator('meta[name="description"]')).toHaveAttribute('content', /Projects by/)
+})
+
+test('projects: card opens detail, next and back links work', async ({ page }) => {
+  await page.goto('/projects')
+  await page.getByRole('link', { name: /UW Course Planner/ }).click()
+  await expect(page).toHaveURL(/\/projects\/uw-course-planner$/)
+  await expect(page.getByRole('heading', { level: 1 })).toHaveAccessibleName('UW Course Planner')
+  await page.getByRole('navigation', { name: 'Next project' }).getByRole('link').click()
+  await expect(page).toHaveURL(/\/projects\/space-mining$/)
+  await page.getByRole('link', { name: '← All projects' }).click()
+  await expect(page).toHaveURL(/\/projects$/)
 })

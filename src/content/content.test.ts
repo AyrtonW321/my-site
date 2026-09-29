@@ -1,5 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import indexHtml from '../../index.html?raw'
+import sitemap from '../../public/sitemap.xml?raw'
 import { experience } from './experience'
 import { profile } from './profile'
 import { projects } from './projects'
@@ -22,6 +23,12 @@ describe('content integrity (always on)', () => {
     // Static tags exist for crawlers and link previews, which do not run JS.
     const occurrences = indexHtml.split(profile.description).length - 1
     expect(occurrences).toBe(3) // description, og:description, twitter:description
+  })
+
+  it('lists every browsable project in the sitemap', () => {
+    for (const p of projects.filter((p) => p.status !== 'planned')) {
+      expect(sitemap, p.slug).toContain(`/projects/${p.slug}<`)
+    }
   })
 
   it('has unique experience ids', () => {

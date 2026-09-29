@@ -2,7 +2,15 @@ import { describe, expect, it } from 'vitest'
 import type { Experience, Project } from '../content/types'
 import { experiencePeriod, getCurrentRole } from './experience'
 import { formatDateRange, formatMonthYear } from './format'
-import { getBySlug, getFeatured, getListed, getPlanned, projectBadge } from './projects'
+import {
+  getBySlug,
+  getFeatured,
+  getListed,
+  getNext,
+  getPlanned,
+  projectBadge,
+  statusLabel,
+} from './projects'
 
 const mk = (slug: string, over: Partial<Project> = {}): Project => ({
   slug,
@@ -75,5 +83,25 @@ describe('experience selectors', () => {
   it('uses the label in place of dates', () => {
     expect(experiencePeriod(role('x', { label: 'CO-OP' }))).toBe('CO-OP')
     expect(experiencePeriod(role('x', { start: '2026-06' }))).toBe('JUN 2026 – NOW')
+  })
+})
+
+describe('getNext / statusLabel', () => {
+  const list = [mk('a'), mk('b', { status: 'planned' }), mk('c'), mk('d', { status: 'wip' })]
+
+  it('walks listed projects, skips planned, wraps around', () => {
+    expect(getNext('a', list)?.slug).toBe('c')
+    expect(getNext('c', list)?.slug).toBe('d')
+    expect(getNext('d', list)?.slug).toBe('a')
+  })
+
+  it('has no next for unknown slugs or a single project', () => {
+    expect(getNext('zzz', list)).toBeUndefined()
+    expect(getNext('a', [mk('a')])).toBeUndefined()
+  })
+
+  it('labels statuses', () => {
+    expect(statusLabel(mk('x', { status: 'wip' }))).toBe('In progress')
+    expect(statusLabel(mk('x'))).toBe('Completed')
   })
 })
