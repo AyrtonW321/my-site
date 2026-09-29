@@ -2,10 +2,12 @@ import '@fontsource-variable/geist'
 import '@fontsource-variable/geist-mono'
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import { RouterProvider } from 'react-router/dom'
+import { router } from './app/router'
 import './index.css'
 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
-    <main className="min-h-dvh" />
+    <RouterProvider router={router} />
   </StrictMode>,
 )
