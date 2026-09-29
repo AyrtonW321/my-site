@@ -3,19 +3,14 @@
 Kept current by whoever works on the site. Tick items off (and delete them) as they land.
 Nothing here may be faked: the content test and the launch gate (`npm run test:launch`) exist to stop placeholders shipping.
 
-## Blocks M5 (projects pages)
+## Content for the M5 and M6 pages (layouts are built; these fill them in)
 
-- [ ] Figma outline for `/projects` (grid of done/wip projects plus the "Up next" row of planned ones).
-- [ ] Figma outline for `/projects/:slug` (media, title, year, tags, write-up, GitHub and Live buttons, "← All projects").
-- [ ] A write-up per project (`body` in `src/content/projects.ts`): heading plus paragraphs.
-- [ ] GitHub and live URLs per project (all `links: {}` today, so no buttons can render).
-- [ ] Any planned projects for the "Up next" row (none defined yet: title, one line, tags).
-
-## Blocks M6 (experience page)
-
-- [ ] Figma outline for `/experience`.
-- [ ] `public/resume.pdf`, and `public/resume.png` (a PNG of page 1, used as the phone preview).
-- [ ] Optional: bullets for Haneco Energy and Kumon Markham, and any detail for the Richmond Hill Public Library volunteer role (it has no description yet, so it shows dates only). LinkedIn skill tags if wanted.
+- [ ] A write-up per project (`body` in `src/content/projects.ts`): heading plus paragraphs. Pages work without it.
+- [ ] GitHub and live URLs per project (all `links: {}` today, so the buttons don't render).
+- [ ] Any planned projects for the "Up next" row on `/projects` (none defined, so the row is hidden): title, one line, tags.
+- [ ] `public/resume.pdf` and `public/resume.png` (a PNG of page 1, shown on phones). Until they exist the Download link and the preview are broken.
+- [ ] Optional: bullets for Haneco Energy and Kumon Markham, and detail for the Richmond Hill Public Library role (dates only today). Company URLs (`url`) if you want the company names linked.
+- [ ] Look over the layouts I designed for `/projects`, `/projects/:slug` and `/experience` (no Figma existed) and say what to change.
 
 ## Blocks M8 (launch readiness)
 
@@ -40,7 +35,7 @@ Nothing here may be faked: the content test and the launch gate (`npm run test:l
 - [ ] Check what the Vercel to GitHub link auto-deploys. Non-production branch pushes create preview deployments by default.
 - [ ] Set the production branch (repo default is `master`).
 - [ ] After the first deploy: check the link preview (`og.png`) in a social debugger, and add the URL to Google Search Console if wanted.
-- [ ] Add each `/projects/<slug>` URL to `public/sitemap.xml` once M5 lands.
+- [ ] If you add or remove projects, update `public/sitemap.xml` (a test fails if a browsable project is missing).
 
 ## Checks that need a real device or browser (not possible from the dev environment)
 

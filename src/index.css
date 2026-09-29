@@ -170,3 +170,8 @@
     clip-path: inset(0);
   }
 }
+
+/* The résumé heading row sits above the panel; keep it clear of the nav on #resume. */
+#resume {
+  scroll-margin-top: 12rem;
+}

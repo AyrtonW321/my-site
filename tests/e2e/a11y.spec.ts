@@ -8,7 +8,7 @@ test.use({ reducedMotion: 'reduce' })
 const BRAND_ACCENT = ['#hero-title', '#contact-title']
 
 for (const theme of ['light', 'dark'] as const) {
-  for (const path of ['/', '/projects', '/experience', '/nope']) {
+  for (const path of ['/', '/projects', '/projects/skill-router', '/experience', '/nope']) {
     test(`axe: ${path} (${theme})`, async ({ page }) => {
       await page.emulateMedia({ colorScheme: theme })
       await page.goto(path)
