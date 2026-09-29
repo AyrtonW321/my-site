@@ -53,3 +53,7 @@ Defined in `src/index.css`. Fonts: Geist + Geist Mono (`@fontsource-variable`, 5
 6. Desktop "View all ↗" pill and mobile "View all projects ↗" button both link to `/projects`.
 7. **React Router 7.x** (latest published is 7.18; the plan assumed 8.x). Same data-router API.
 8. CI runs lint, typecheck, unit tests and build. The Playwright job is added in M7 with the E2E suite (Playwright errors on zero tests).
+9. **Large display accent.** The contact heading's "something." uses brand `#07b2f8` on light (large text, identity choice, same exception as the hero "Wong.").
+10. **Experience data.** More roles than the Figma shows (Trademark Industries, The STEAM Project, Richmond Hill Public Library) come from Ayrton's LinkedIn. The homepage shows the first three; `/experience` shows all. A "Full timeline ↗" button is added under the homepage list.
+11. **Project media** has no "[ screenshot / demo loop ]" caption; an empty tinted block is used until real screenshots land (no placeholder text ships).
+12. **Contact** section heading is the big "Let's build something." (its `<h2>`); there is no separate title. LinkedIn controls are hidden until `profile.links.linkedin` is set.

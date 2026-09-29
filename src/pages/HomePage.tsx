@@ -1,13 +1,19 @@
-import { Container } from '../components/ui/Container'
 import { profile } from '../content/profile'
+import { AboutSection } from '../features/about/AboutSection'
+import { ContactSection } from '../features/contact/ContactSection'
+import { ExperienceSummary } from '../features/experience/ExperienceSummary'
+import { Hero } from '../features/hero/Hero'
+import { FeaturedProjects } from '../features/projects/FeaturedProjects'
 
 export default function HomePage() {
   return (
-    <Container className="pt-28 pb-24">
+    <>
       <title>{`${profile.first} ${profile.last} — Applied Math @ Waterloo`}</title>
-      <h1 className="text-5xl font-bold tracking-tight">
-        {profile.first} {profile.last}.
-      </h1>
-    </Container>
+      <Hero />
+      <AboutSection />
+      <FeaturedProjects />
+      <ExperienceSummary />
+      <ContactSection />
+    </>
   )
 }

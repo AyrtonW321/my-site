@@ -24,13 +24,17 @@ export interface Experience {
   role: string
   company: string
   location?: string
+  kind?: 'Co-op' | 'Part-time' | 'Volunteer'
   /** Shown in place of the date range, e.g. "CO-OP". */
   label?: string
+  /** Short title for the About "Now" card, e.g. "Energy Specialist". */
+  shortRole?: string
   /** 'YYYY-MM' */
   start?: string
   /** 'YYYY-MM'; null = current */
   end: string | null
-  summary: string
+  /** One line for the homepage row; omit when there is nothing to say yet. */
+  summary?: string
   bullets?: string[]
   url?: string
 }
