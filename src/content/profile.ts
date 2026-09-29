@@ -8,7 +8,7 @@ export const profile: Profile = {
   tagline: ['Applied Mathematics', 'Scientific Computing + ML', 'University of Waterloo'],
   intro: {
     lead: "I'm an Applied Mathematics student at the University of Waterloo, concentrating in Scientific Computing and Machine Learning.",
-    body: 'I build tools for problems I actually have. Right now that means a course planner for UW students, a Roblox game about mining asteroids, and a lot of time in Figma.',
+    body: 'I build tools for problems I actually have.',
   },
   building: { verb: 'is building', subject: 'a course planner' },
   aboutLines: [
