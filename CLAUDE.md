@@ -1,6 +1,6 @@
 # my-site
 
-Ayrton Wong's personal portfolio. Vite 8 + React 19 + TS 6 (strict) + Tailwind 4 + React Router (data mode). Spec and deviations log: `docs/SPEC.md`. Build plan: `~/.claude/plans/serialized-chasing-locket.md`.
+Ayrton Wong's personal portfolio. Vite 8 + React 19 + TS 6 (strict) + Tailwind 4 + React Router (data mode). Spec and deviations log: `docs/SPEC.md`. Build plan: `docs/PLAN.md`.
 
 ## Commands
 
