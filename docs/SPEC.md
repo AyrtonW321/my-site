@@ -1,0 +1,55 @@
+# Site spec
+
+Source of truth for product decisions. Keep current; log every Figma override under "Deviations from Figma".
+Visual source: Figma file `gXDoYIm5mpBLZqZI1jjwDy` (home light `5:26`, motion notes `6:498`), plus PNG exports in `design/` (local only).
+
+## Routes
+
+| Route             | Content                                                                                                                                            |
+| ----------------- | -------------------------------------------------------------------------------------------------------------------------------------------------- |
+| `/`               | Hero (quick links), `#about` (5 cards), `#projects` (up to 4 featured + "View all"), `#experience` (condensed timeline + link), `#contact`, Footer |
+| `/projects`       | Grid of `done` and `wip` projects, then an "Up next" row of `planned` (small, not clickable)                                                       |
+| `/projects/:slug` | Detail: media, title, year, tags, write-up, GitHub/Live buttons, "← All projects". Layout awaits Figma outline.                                    |
+| `/experience`     | Full roles with bullets; `#resume` expandable panel (embedded PDF, PNG preview on phones, Download). Layout awaits Figma outline.                  |
+| `*`               | 404 in site style                                                                                                                                  |
+
+## Nav
+
+- Desktop: floating pill, logo `ayrton.wong`, Home / About / Projects / Experience / Contact, theme toggle, black Résumé button → `/experience#resume`. About and Contact are `/#about`, `/#contact`.
+- Mobile: full-width top bar, logo left, theme toggle + hamburger right; hamburger opens a dropdown with all links + Résumé.
+
+## Contact
+
+Primary: `ayrtonwongg@gmail.com` (`mailto:`), then Copy email, LinkedIn, GitHub. Secondary line: `a393wong@uwaterloo.ca`. **Never a phone number.**
+
+## Theme
+
+Circular View Transitions reveal from the toggle (~500ms, both directions). First visit follows `prefers-color-scheme`; afterwards `localStorage.theme`. Pre-paint inline script in `index.html` prevents flash. No View Transitions or reduced motion → instant switch.
+
+## Motion at launch
+
+01 nav pill (sliding highlight, shrink after 40px scroll) · 03 hero load (bar, letter stagger 30ms, typed tagline) · 04 scroll reveal (fade up 16px, once) · 05 card hover (lift 2px, accent border, ↗ nudge) · 07 reduced motion disables all; content visible without animation.
+Deferred: 06 (spotlight, dots, logo accent cycling, hint), demo videos on cards.
+
+## Projects at launch
+
+UW Course Planner, Space Mining, Skill Router (WIP), Person Tracker. Person Tracker ships only with real text. `status`: `done | wip | planned`; `featured` ≤ 4. **No placeholder text ever ships** (enforced by `src/content/content.test.ts`).
+
+## Other requirements
+
+Responsive 320px+, mobile-first, content max 1120px. Vercel Web Analytics. `vercel.json` SPA rewrite. Meta + OG tags. **No deploy until Ayrton says so** (target `ayrtonwong.vercel.app`).
+
+## Design tokens
+
+Defined in `src/index.css`. Fonts: Geist + Geist Mono (`@fontsource-variable`, 5.3.0). Dark values are sampled by eye; replace with exact Figma values when provided.
+
+## Deviations from Figma
+
+1. **`text-3` contrast.** Figma `#9d9da6` on `#fafaf9` ≈ 2.6:1. `--text-3` is now `#6b6b74` (≥4.5:1 on bg, surface, surface-2) for small text; the Figma value survives as `--text-decor` for purely decorative marks. Dark `--text-3` is `#85858e` (Figma-sampled `#71717a` ≈ 4.1:1 fails); `#71717a` is dark `--text-decor`.
+2. **Accent on small text.** `#07b2f8` on light ≈ 2.4:1. New `--accent-text` `#026fa1` for small light-mode text (tagline, company names). Brand `#07b2f8` stays for the hero "Wong.", bars, dots, and all of dark mode. Hero "Wong." is the one deliberate AA exception (identity choice).
+3. Uni email line under the Gmail button (not in Figma).
+4. Résumé "UPDATED SEP 2026" comes from `profile.resume.updated`, never hardcoded.
+5. Mobile menu dropdown contents and style (not in Figma).
+6. Desktop "View all ↗" pill and mobile "View all projects ↗" button both link to `/projects`.
+7. **React Router 7.x** (latest published is 7.18; the plan assumed 8.x). Same data-router API.
+8. CI runs lint, typecheck, unit tests and build. The Playwright job is added in M7 with the E2E suite (Playwright errors on zero tests).
