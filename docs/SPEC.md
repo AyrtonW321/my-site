@@ -52,9 +52,12 @@ Defined in `src/index.css`. Fonts: Geist + Geist Mono (`@fontsource-variable`, 5
 5. Mobile menu dropdown contents and style (not in Figma).
 6. Desktop "View all ↗" pill and mobile "View all projects ↗" button both link to `/projects`.
 7. **React Router 7.x** (latest published is 7.18; the plan assumed 8.x). Same data-router API.
-8. CI runs lint, typecheck, unit tests and build. The Playwright job is added in M7 with the E2E suite (Playwright errors on zero tests).
+8. CI runs lint, typecheck, unit tests, build and the Playwright e2e suite (added in M7).
 9. **Large display accent.** The contact heading's "something." uses brand `#07b2f8` on light (large text, identity choice, same exception as the hero "Wong.").
 10. **Experience data.** More roles than the Figma shows (Trademark Industries, The STEAM Project, Richmond Hill Public Library) come from Ayrton's LinkedIn. The homepage shows the first three; `/experience` shows all. A "Full timeline ↗" button is added under the homepage list.
 11. **Project media** has no "[ screenshot / demo loop ]" caption; an empty tinted block is used until real screenshots land (no placeholder text ships).
 12. **Contact** section heading is the big "Let's build something." (its `<h2>`); there is no separate title. LinkedIn controls are hidden until `profile.links.linkedin` is set.
 13. **Reduced motion is CSS-gated, not hook-driven.** The plan's `usePrefersReducedMotion` hook is skipped: hidden/animated starting states (`.reveal`, hero bar/letters/tagline) exist only inside `@media (prefers-reduced-motion: no-preference)`, so reduced-motion visitors always get final, visible content with no JS. The theme toggle still checks `matchMedia` itself.
+14. **Page title and description via `usePageMeta`**, not React 19 hoisted `<title>`/`<meta>`. Hoisting adds a second tag next to the static ones in `index.html` (which crawlers and link previews need), so the hook updates the single existing tags instead. The 404 page still hoists `<meta name="robots" content="noindex">`.
+15. **External links** carry a visually hidden " (opens in new tab)" in place of an `aria-label` where the tile has other visible text, so the accessible name always contains the visible label (WCAG 2.5.3). Contact buttons keep `aria-label` because their visible text is a prefix of it.
+16. **Static meta values** (canonical, Open Graph, Twitter) are site-level and point at the homepage for every route; there is no prerendering. `content.test.ts` checks the static description matches `profile.description`.

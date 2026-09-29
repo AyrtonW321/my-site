@@ -1,10 +1,12 @@
 import { Link } from 'react-router'
 import { Container } from '../components/ui/Container'
+import { usePageMeta } from '../hooks/usePageMeta'
 
 export default function NotFoundPage() {
+  usePageMeta('Page not found')
   return (
     <Container className="pt-28 pb-24">
-      <title>Page not found</title>
+      <meta name="robots" content="noindex" />
       <p className="font-mono text-xs tracking-widest text-accent-text uppercase">404</p>
       <h1 className="mt-3 text-4xl font-semibold tracking-tight">Nothing here.</h1>
       <p className="mt-3 text-text-2">That page doesn't exist or has moved.</p>

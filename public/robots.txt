@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://ayrtonwong.vercel.app/sitemap.xml

@@ -5,8 +5,8 @@ Ayrton Wong's personal portfolio. Vite 8 + React 19 + TS 6 (strict) + Tailwind 4
 ## Commands
 
 - `npm run dev` · `npm run build` · `npm run preview`
-- `npm run lint` (oxlint + jsx-a11y) · `npm run typecheck` · `npm test` (vitest) · `npm run format` (prettier)
-- All four of lint/typecheck/test/build must pass before a commit/PR.
+- `npm run lint` (oxlint + jsx-a11y) · `npm run typecheck` · `npm test` (vitest) · `npm run test:e2e` (Playwright + axe, builds and serves a preview) · `npm run test:launch` (launch gate, fails until M8 inputs land) · `npm run format` (prettier)
+- lint, typecheck, test and build must pass before a commit/PR (CI also runs test:e2e). Outstanding inputs and decisions live in `docs/NEEDS.md`; check it before asking Ayrton for something.
 
 ## Conventions
 

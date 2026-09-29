@@ -7,6 +7,32 @@
     <meta name="theme-color" content="#fafaf9" media="(prefers-color-scheme: light)" />
     <meta name="theme-color" content="#0a0a0b" media="(prefers-color-scheme: dark)" />
     <title>Ayrton Wong — Applied Math @ Waterloo</title>
+    <!-- Static site-level defaults: crawlers and link previews don't run JS. Keep the
+         description in sync with profile.description (checked by content.test.ts). -->
+    <meta
+      name="description"
+      content="Applied Mathematics student at the University of Waterloo, concentrating in Scientific Computing and Machine Learning. Projects, experience and contact."
+    />
+    <link rel="canonical" href="https://ayrtonwong.vercel.app/" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content="Ayrton Wong" />
+    <meta property="og:title" content="Ayrton Wong — Applied Math @ Waterloo" />
+    <meta
+      property="og:description"
+      content="Applied Mathematics student at the University of Waterloo, concentrating in Scientific Computing and Machine Learning. Projects, experience and contact."
+    />
+    <meta property="og:url" content="https://ayrtonwong.vercel.app/" />
+    <meta property="og:image" content="https://ayrtonwong.vercel.app/og.png" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:image:alt" content="Ayrton Wong, Applied Mathematics" />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="Ayrton Wong — Applied Math @ Waterloo" />
+    <meta
+      name="twitter:description"
+      content="Applied Mathematics student at the University of Waterloo, concentrating in Scientific Computing and Machine Learning. Projects, experience and contact."
+    />
+    <meta name="twitter:image" content="https://ayrtonwong.vercel.app/og.png" />
     <script>
       // Pre-paint theme. Keep in sync with resolveInitialTheme in src/lib/theme.ts.
       try {
@@ -20,6 +46,7 @@
   </head>
   <body>
     <div id="root"></div>
+    <noscript>Ayrton Wong's portfolio needs JavaScript to display.</noscript>
     <script type="module" src="/src/main.tsx"></script>
   </body>
 </html>

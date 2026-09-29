@@ -2,17 +2,16 @@ import { Link, useParams } from 'react-router'
 import { Container } from '../components/ui/Container'
 import { Tag } from '../components/ui/Tag'
 import { profile } from '../content/profile'
+import type { Project } from '../content/types'
+import { usePageMeta } from '../hooks/usePageMeta'
 import { getBySlug } from '../lib/projects'
 import NotFoundPage from './NotFoundPage'
 
 // Minimal until the Figma outline arrives (M5).
-export default function ProjectDetailPage() {
-  const { slug } = useParams()
-  const project = getBySlug(slug)
-  if (!project) return <NotFoundPage />
+function ProjectDetail({ project }: { project: Project }) {
+  usePageMeta(`${project.title} — ${profile.first} ${profile.last}`, project.summary)
   return (
     <Container className="pt-28 pb-24">
-      <title>{`${project.title} — ${profile.first} ${profile.last}`}</title>
       <Link to="/projects" className="text-sm text-text-2 hover:text-text">
         ← All projects
       </Link>
@@ -27,4 +26,9 @@ export default function ProjectDetailPage() {
       </ul>
     </Container>
   )
+}
+
+export default function ProjectDetailPage() {
+  const project = getBySlug(useParams().slug)
+  return project ? <ProjectDetail project={project} /> : <NotFoundPage />
 }

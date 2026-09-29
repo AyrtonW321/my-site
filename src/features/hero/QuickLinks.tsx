@@ -25,15 +25,18 @@ function ExternalCard({
       href={href}
       target="_blank"
       rel="noopener noreferrer"
-      aria-label={`${name} (opens in new tab)`}
       className={`${tile} bg-surface hover:border-accent ${wide ? 'sm:col-span-2' : ''}`}
     >
-      <span className="grid size-8 shrink-0 place-items-center rounded-lg bg-surface-2 font-mono text-[11px]">
+      <span
+        aria-hidden="true"
+        className="grid size-8 shrink-0 place-items-center rounded-lg bg-surface-2 font-mono text-[11px]"
+      >
         {glyph}
       </span>
       <span className="min-w-0 flex-1">
         <span className="block text-sm font-medium">{name}</span>
         <Label className="mt-0.5 truncate">{caption}</Label>
+        <span className="sr-only"> (opens in new tab)</span>
       </span>
       <ArrowIcon className="text-text-3" />
     </a>

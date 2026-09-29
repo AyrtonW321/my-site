@@ -45,6 +45,7 @@ export interface Profile {
   program: string
   university: string
   tagline: string[]
+  description: string
   intro: { lead: string; body: string }
   building: { verb: string; subject: string }
   aboutLines: string[]

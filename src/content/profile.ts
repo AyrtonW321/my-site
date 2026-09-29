@@ -6,6 +6,9 @@ export const profile: Profile = {
   program: 'Applied Mathematics',
   university: 'University of Waterloo',
   tagline: ['Applied Mathematics', 'Scientific Computing + ML', 'University of Waterloo'],
+  /** Meta description; index.html must carry the same text (checked by a test). */
+  description:
+    'Applied Mathematics student at the University of Waterloo, concentrating in Scientific Computing and Machine Learning. Projects, experience and contact.',
   intro: {
     lead: "I'm an Applied Mathematics student at the University of Waterloo, concentrating in Scientific Computing and Machine Learning.",
     body: 'I build tools for problems I actually have.',

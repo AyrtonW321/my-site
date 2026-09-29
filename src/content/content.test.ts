@@ -1,4 +1,5 @@
 import { describe, expect, it } from 'vitest'
+import indexHtml from '../../index.html?raw'
 import { experience } from './experience'
 import { profile } from './profile'
 import { projects } from './projects'
@@ -15,6 +16,12 @@ describe('content integrity (always on)', () => {
 
   it('features at most 4 projects', () => {
     expect(projects.filter((p) => p.featured).length).toBeLessThanOrEqual(4)
+  })
+
+  it('keeps index.html meta tags in sync with the profile', () => {
+    // Static tags exist for crawlers and link previews, which do not run JS.
+    const occurrences = indexHtml.split(profile.description).length - 1
+    expect(occurrences).toBe(3) // description, og:description, twitter:description
   })
 
   it('has unique experience ids', () => {
