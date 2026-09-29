@@ -33,9 +33,10 @@ export const experience: readonly Experience[] = [
     company: 'Kumon',
     kind: 'Part-time',
     location: 'Richmond Hill',
-    start: '2021-03',
+    start: '2022-03',
     end: '2025-08',
-    summary: 'Four years helping students with math and reading, one worksheet at a time.',
+    summary:
+      'Three and a half years helping students with math and reading, one worksheet at a time.',
     bullets: [
       'Supported students from early elementary to high school in math and reading',
       'Managed a busy classroom environment, ensuring smooth student flow and maintaining engagement',

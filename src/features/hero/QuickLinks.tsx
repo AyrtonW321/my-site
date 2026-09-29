@@ -4,7 +4,8 @@ import { Label } from '../../components/ui/Label'
 import { profile } from '../../content/profile'
 import { formatMonthYear } from '../../lib/format'
 
-const tile = 'group flex items-center gap-3 rounded-2xl border p-3 transition-colors min-h-11'
+const tile =
+  'group flex min-h-11 items-center gap-3 rounded-2xl border p-3 transition-[transform,border-color,opacity] hover:-translate-y-0.5 focus-visible:-translate-y-0.5'
 
 function ExternalCard({
   href,

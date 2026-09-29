@@ -8,7 +8,7 @@ import { ProjectMedia } from './ProjectMedia'
 export function ProjectCard({ project, index }: { project: Project; index: number }) {
   return (
     <Link to={`/projects/${project.slug}`} className="group block h-full rounded-[20px]">
-      <Card className="h-full p-4 pb-6">
+      <Card interactive className="h-full p-4 pb-6">
         <ProjectMedia project={project} tone={index % 2 === 0 ? 'accent' : 'neutral'} />
         <div className="mt-5 flex items-baseline justify-between gap-4 px-2">
           <h3 className="text-lg font-medium tracking-tight">{project.title}</h3>

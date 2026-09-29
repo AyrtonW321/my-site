@@ -1,36 +1,40 @@
 import { Link, useLocation } from 'react-router'
+import { useScrolled } from '../../hooks/useScrolled'
+import { cn } from '../../lib/cn'
 import { Logo } from './Logo'
 import { MobileMenu } from './MobileMenu'
+import { NavPill } from './NavPill'
 import { ThemeToggle } from './ThemeToggle'
-import { navLinks, resumeLink } from './links'
+import { navLinks, resumeLink, sectionIds } from './links'
+import { useActiveSection } from './useActiveSection'
 
-const isActive = (to: string, pathname: string) =>
-  to === '/' ? pathname === '/' : !to.includes('#') && pathname.startsWith(to)
+const onHome = (pathname: string) => pathname === '/'
 
 export function Nav() {
   const { pathname } = useLocation()
+  const scrolled = useScrolled(40)
+  const section = useActiveSection(sectionIds, onHome(pathname))
+
+  // On the homepage the highlight follows the section in view (Home at the top);
+  // elsewhere it follows the route.
+  const activeLabel = onHome(pathname)
+    ? (navLinks.find((l) => l.section === section)?.label ?? 'Home')
+    : (navLinks.find((l) => l.to !== '/' && !l.to.includes('#') && pathname.startsWith(l.to))
+        ?.label ?? null)
+
   return (
     <header>
       {/* Desktop: floating pill */}
       <div className="pointer-events-none fixed inset-x-0 top-4 z-50 hidden justify-center md:flex">
         <nav
           aria-label="Primary"
-          className="pointer-events-auto flex items-center gap-1 rounded-full border bg-nav-bg py-1.5 pr-1.5 pl-4 shadow-sm backdrop-blur-md"
+          className={cn(
+            'pointer-events-auto flex origin-top items-center gap-1 rounded-full border bg-nav-bg py-1.5 pr-1.5 pl-4 backdrop-blur-md transition-[transform,box-shadow] duration-300',
+            scrolled ? 'scale-[.96] shadow-lg' : 'shadow-sm',
+          )}
         >
           <Logo />
-          <ul className="ml-3 flex items-center gap-0.5">
-            {navLinks.map((l) => (
-              <li key={l.label}>
-                <Link
-                  to={l.to}
-                  aria-current={isActive(l.to, pathname) ? 'page' : undefined}
-                  className="rounded-full px-3 py-1.5 text-[13px] text-text-2 transition-colors hover:text-text aria-[current=page]:bg-surface-2 aria-[current=page]:text-text"
-                >
-                  {l.label}
-                </Link>
-              </li>
-            ))}
-          </ul>
+          <NavPill activeLabel={activeLabel} sectionActive={onHome(pathname)} />
           <ThemeToggle />
           <Link
             to={resumeLink}
