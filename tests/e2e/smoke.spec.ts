@@ -159,3 +159,12 @@ test('resume files are served', async ({ request }) => {
   expect(png.status()).toBe(200)
   expect(png.headers()['content-type']).toContain('image/png')
 })
+
+test('tab icon is the supplied favicon and is served', async ({ page, request }) => {
+  await page.goto('/')
+  const href = await page.locator('link[rel="icon"]').getAttribute('href')
+  expect(href).toBe('/favicon.png')
+  const res = await request.get('/favicon.png')
+  expect(res.status()).toBe(200)
+  expect(res.headers()['content-type']).toContain('image/png')
+})
