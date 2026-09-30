@@ -22,3 +22,10 @@ dist-ssr
 *.njsproj
 *.sln
 *.sw?
+
+# Figma exports stay local
+design/
+
+# Playwright
+test-results/
+playwright-report/

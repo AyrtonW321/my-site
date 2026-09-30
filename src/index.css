@@ -1,111 +1,292 @@
+@import 'tailwindcss';
+
+@custom-variant dark (&:where([data-theme=dark], [data-theme=dark] *));
+
+/* Light is the default; the pre-paint script in index.html sets data-theme. */
 :root {
-  --text: #6b6375;
-  --text-h: #08060d;
-  --bg: #fff;
-  --border: #e5e4e7;
-  --code-bg: #f4f3ec;
-  --accent: #aa3bff;
-  --accent-bg: rgba(170, 59, 255, 0.1);
-  --accent-border: rgba(170, 59, 255, 0.5);
-  --social-bg: rgba(244, 243, 236, 0.5);
-  --shadow:
-    rgba(0, 0, 0, 0.1) 0 10px 15px -3px, rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+  --bg: #fafaf9;
+  --surface: #ffffff;
+  --surface-2: #f3f3f4;
+  --text: #0b0b0c;
+  --text-2: #55555d;
+  --text-3: #6b6b74; /* AA-safe; Figma's #9d9da6 is --text-decor */
+  --text-decor: #9d9da6;
+  --border: #e6e6e8;
+  --accent: #07b2f8;
+  --accent-text: #026fa1; /* AA-safe accent for small text */
+  --accent-display: #0894d3; /* brand cyan darkened to 3.3:1 for large display type */
+  --glow: 14%;
+  --accent-soft: #e6f7fe;
+  --success: #16a34a;
+  --nav-bg: #ffffffc7;
+  color-scheme: light;
+}
 
-  --sans: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --heading: system-ui, 'Segoe UI', Roboto, sans-serif;
-  --mono: ui-monospace, Consolas, monospace;
+/* Dark values sampled by eye from the Figma PNG; replace when exact tokens arrive. */
+:root[data-theme='dark'] {
+  --bg: #0a0a0b;
+  --surface: #111113;
+  --surface-2: #18181b;
+  --text: #f5f5f6;
+  --text-2: #a1a1aa;
+  --text-3: #85858e;
+  --text-decor: #71717a;
+  --border: #232327;
+  --accent: #07b2f8;
+  --accent-text: #07b2f8;
+  --accent-display: #07b2f8;
+  --glow: 15%;
+  --accent-soft: #072a3a;
+  --success: #22c55e;
+  --nav-bg: #111113c7;
+  color-scheme: dark;
+}
 
-  font: 18px/145% var(--sans);
-  letter-spacing: 0.18px;
-  color-scheme: light dark;
-  color: var(--text);
-  background: var(--bg);
-  font-synthesis: none;
-  text-rendering: optimizeLegibility;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+@theme inline {
+  --color-bg: var(--bg);
+  --color-surface: var(--surface);
+  --color-surface-2: var(--surface-2);
+  --color-text: var(--text);
+  --color-text-2: var(--text-2);
+  --color-text-3: var(--text-3);
+  --color-text-decor: var(--text-decor);
+  --color-border: var(--border);
+  --color-accent: var(--accent);
+  --color-accent-text: var(--accent-text);
+  --color-accent-display: var(--accent-display);
+  --color-accent-soft: var(--accent-soft);
+  --color-success: var(--success);
+  --color-nav-bg: var(--nav-bg);
+}
 
-  @media (max-width: 1024px) {
-    font-size: 16px;
+@theme {
+  --font-sans: 'Geist Variable', ui-sans-serif, system-ui, sans-serif;
+  --font-mono: 'Geist Mono Variable', ui-monospace, SFMono-Regular, monospace;
+  --ease-spring: cubic-bezier(0.34, 1.56, 0.64, 1);
+  --ease-out: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  * {
+    border-color: var(--border);
+  }
+  html {
+    scroll-behavior: smooth;
+  }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: var(--font-sans);
+    -webkit-font-smoothing: antialiased;
+  }
+  :focus-visible {
+    outline: 2px solid var(--accent);
+    outline-offset: 2px;
   }
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --text: #9ca3af;
-    --text-h: #f3f4f6;
-    --bg: #16171d;
-    --border: #2e303a;
-    --code-bg: #1f2028;
-    --accent: #c084fc;
-    --accent-bg: rgba(192, 132, 252, 0.15);
-    --accent-border: rgba(192, 132, 252, 0.5);
-    --social-bg: rgba(47, 48, 58, 0.5);
-    --shadow:
-      rgba(0, 0, 0, 0.4) 0 10px 15px -3px, rgba(0, 0, 0, 0.25) 0 4px 6px -2px;
+@media (prefers-reduced-motion: reduce) {
+  html {
+    scroll-behavior: auto;
   }
-
-  #social .button-icon {
-    filter: invert(1) brightness(2);
+  *,
+  ::before,
+  ::after {
+    animation-duration: 0.01ms !important;
+    animation-delay: 0s !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    transition-delay: 0s !important;
   }
 }
 
-#root {
-  width: 1126px;
-  max-width: 100%;
-  margin: 0 auto;
-  text-align: center;
-  border-inline: 1px solid var(--border);
-  min-height: 100svh;
-  display: flex;
-  flex-direction: column;
-  box-sizing: border-box;
+/* Anchor targets clear the fixed nav. */
+[id] {
+  scroll-margin-top: 6rem;
 }
 
-body {
-  margin: 0;
+/* Theme switch: the new theme spreads from the toggle as a soft-edged wave, and inside the
+   wave it blooms through a grid of growing dots ("pixels") until the screen is fully covered.
+   Browsers without @property or masks fall back to an instant switch. */
+@property --pix-r {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 100%;
 }
-
-h1,
-h2 {
-  font-family: var(--heading);
-  font-weight: 500;
-  color: var(--text-h);
+@property --reach {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 400vmax;
 }
-
-h1 {
-  font-size: 56px;
-  letter-spacing: -1.68px;
-  margin: 32px 0;
-  @media (max-width: 1024px) {
-    font-size: 36px;
-    margin: 20px 0;
+::view-transition-old(root),
+::view-transition-new(root) {
+  animation: none;
+  mix-blend-mode: normal;
+}
+::view-transition-new(root) {
+  -webkit-mask-image:
+    radial-gradient(
+      circle farthest-corner at center,
+      #000 var(--pix-r),
+      transparent calc(var(--pix-r) + 0.5px)
+    ),
+    radial-gradient(
+      circle at var(--vt-x, 50%) var(--vt-y, 0px),
+      #000 calc(var(--reach) - 22vmax),
+      transparent var(--reach)
+    );
+  mask-image:
+    radial-gradient(
+      circle farthest-corner at center,
+      #000 var(--pix-r),
+      transparent calc(var(--pix-r) + 0.5px)
+    ),
+    radial-gradient(
+      circle at var(--vt-x, 50%) var(--vt-y, 0px),
+      #000 calc(var(--reach) - 22vmax),
+      transparent var(--reach)
+    );
+  -webkit-mask-size:
+    20px 20px,
+    100% 100%;
+  mask-size:
+    20px 20px,
+    100% 100%;
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  animation:
+    theme-reach 1300ms cubic-bezier(0.6, 0.02, 0.3, 1) both,
+    theme-pix 850ms cubic-bezier(0.3, 0, 0.2, 1) 350ms both;
+}
+@keyframes theme-reach {
+  from {
+    --reach: 0px;
+  }
+  to {
+    --reach: 190vmax;
   }
 }
-h2 {
-  font-size: 24px;
-  line-height: 118%;
-  letter-spacing: -0.24px;
-  margin: 0 0 8px;
-  @media (max-width: 1024px) {
-    font-size: 20px;
+@keyframes theme-pix {
+  from {
+    --pix-r: 0%;
+  }
+  to {
+    --pix-r: 100%;
   }
 }
-p {
-  margin: 0;
+
+/* Ambient background: a faint dot grid fading out down the viewport, plus two slow accent glows. */
+.bg-art {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  overflow: hidden;
+  pointer-events: none;
+}
+.bg-art::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--text) 18%, transparent) 1px,
+    transparent 1.3px
+  );
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(ellipse 90% 75% at 50% 0%, #000 0%, transparent 75%);
+  mask-image: radial-gradient(ellipse 90% 75% at 50% 0%, #000 0%, transparent 75%);
+}
+.bg-glow {
+  position: absolute;
+  width: 70vmax;
+  height: 70vmax;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--accent) var(--glow), transparent),
+    transparent
+  );
+  will-change: transform;
+}
+.bg-glow-a {
+  top: -32vmax;
+  left: -18vmax;
+  animation: glow-a 30s ease-in-out infinite alternate;
+}
+.bg-glow-b {
+  right: -22vmax;
+  bottom: -38vmax;
+  animation: glow-b 38s ease-in-out infinite alternate;
+}
+@keyframes glow-a {
+  to {
+    transform: translate3d(20vmax, 14vmax, 0) scale(1.12);
+  }
+}
+@keyframes glow-b {
+  to {
+    transform: translate3d(-18vmax, -10vmax, 0) scale(1.15);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bg-glow {
+    animation: none;
+  }
 }
 
-code,
-.counter {
-  font-family: var(--mono);
-  display: inline-flex;
-  border-radius: 4px;
-  color: var(--text-h);
+/* Motion. Hidden/animated starting states exist only when motion is allowed, so
+   reduced-motion visitors (and any failure) always see the final, visible content. */
+@media (prefers-reduced-motion: no-preference) {
+  .reveal {
+    opacity: 0;
+    transform: translateY(1rem);
+    transition:
+      opacity 600ms var(--ease-out),
+      transform 600ms var(--ease-out);
+  }
+  .reveal[data-in] {
+    opacity: 1;
+    transform: none;
+  }
+  .hero-bar {
+    animation: bar-grow 450ms var(--ease-out) both;
+  }
+  .hero-letter {
+    display: inline-block;
+    animation: letter-rise 600ms var(--ease-out) both;
+  }
+  .hero-type {
+    animation-name: type-in;
+    animation-fill-mode: both;
+  }
+}
+@keyframes bar-grow {
+  from {
+    width: 0;
+  }
+  to {
+    width: 3.5rem;
+  }
+}
+@keyframes letter-rise {
+  from {
+    opacity: 0;
+    transform: translateY(0.35em);
+  }
+  to {
+    opacity: 1;
+    transform: none;
+  }
+}
+@keyframes type-in {
+  from {
+    clip-path: inset(0 100% 0 0);
+  }
+  to {
+    clip-path: inset(0);
+  }
 }
 
-code {
-  font-size: 15px;
-  line-height: 135%;
-  padding: 4px 8px;
-  background: var(--code-bg);
+/* The résumé heading row sits above the panel; keep it clear of the nav on #resume. */
+#resume {
+  scroll-margin-top: 12rem;
 }
