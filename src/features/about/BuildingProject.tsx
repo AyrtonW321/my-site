@@ -13,7 +13,7 @@ export function BuildingProject({ project }: { project: Project }) {
       to={`/projects/${project.slug}`}
       className="group flex items-center gap-4 rounded-2xl border bg-bg p-3 pr-4 transition-[transform,border-color] hover:-translate-y-0.5 hover:border-accent focus-visible:-translate-y-0.5"
     >
-      <div className="w-24 shrink-0 sm:w-44">
+      <div className="hidden w-24 shrink-0 min-[400px]:block sm:w-44">
         <ProjectMedia project={project} tone="accent" />
       </div>
       <div className="min-w-0 flex-1">
