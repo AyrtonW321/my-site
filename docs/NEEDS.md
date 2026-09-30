@@ -6,23 +6,25 @@ Nothing here may be faked: the content test and the launch gate (`npm run test:l
 ## Resume (needs your decision first)
 
 - [ ] **The resume PDF contains your phone number.** The site spec says no phone number anywhere, and this repo is public (it would also be downloadable from the live site). Either send a version without the phone number, or confirm it should be published as-is. Until then `public/resume.pdf` and `public/resume.png` are NOT in the repo, so the download link and preview are broken. Once decided I add the PDF and render the page-1 PNG.
-- [ ] **Resume vs site mismatches to reconcile** (recruiters will compare them):
-  - Kumon Richmond Hill starts Mar 2021 on the resume; the site says Mar 2022 (as you told me).
-  - Titles: resume says "Assistant Tutor" for both Kumon roles, "Sales Representative / Energy Specialist" at Haneco (site: "Energy Specialist"), and "Sales Associate & Warehouse Packer" at "Trademark Industries Inc." (site: "Sales Assistant", "Trademark Industries Canada").
-  - Haneco runs Sep 2026 to Dec 2026 on the resume; the site shows it as current with no end date.
-  - Space Mining is "2026 - Present" and a collaborative project on the resume; the site lists it as completed. Should it be marked in progress, and who is the collaborator?
+- [ ] **Update the resume to match the site** (site values are the ones you confirmed):
+  - Kumon Richmond Hill starts Mar 2022 (resume says Mar 2021).
+  - The project is now called **LooPlanner** (resume says "UW Course Planner").
+  - Trademark title on the site is now "Sales Associate & Warehouse Packer" (company still "Trademark Industries Canada" on the site vs "Trademark Industries Inc." on the resume; tell me if the company name should change too).
+  - Space Mining is in progress on both.
 
 ## Projects
 
-- [ ] **GitHub links.** UW Course Planner points at `AyrtonW321/LooPlanner` (matched by name and Feb 2026 date, please confirm). Space Mining and Skill Router have no public repo I could find; send URLs or leave them without a pill.
+- [ ] **GitHub links still missing** for Space Mining, Skill Router and GasBuddy Analytics (no repos yet). Send URLs when they exist; the pill and button appear automatically.
+- [ ] **GasBuddy Analytics** is in the "Up next" row with only a title (planned, no repo, no description). Send a one-line description, tags and a year when you have them.
+- [ ] Space Mining is a collaborative project on your resume: send the collaborator name(s) if you want them credited on its page.
 - [ ] **Person Tracker** uses `harryliu1125/Person_Tracker`. Year (2025) and tags (Python, OpenCV, Raspberry Pi) come from your resume; status is set to completed. Confirm.
-- [ ] **GasBuddy analytics** for the "Up next" row: send a one-line description and tags (title, summary and tags are all it needs). I have not added it because I would have to invent the description.
 - [ ] Write-ups per project (`body` in `src/content/projects.ts`) once the GitHub READMEs exist. Pages work without them.
 - [ ] Optional: bullets for Haneco Energy and Kumon Markham, and detail for the Richmond Hill Public Library role (dates only today). Company URLs (`url`) if you want the company names linked.
+- Note: Haneco is set to end Dec 2026. From Jan 2027 the About "Now" card automatically moves on to the next current role (Kumon), so revisit the site then.
 
 ## Blocks launch (M8)
 
-- [ ] A screenshot per project, WebP, about 1280x800 (16:10): UW Course Planner, Space Mining, Skill Router, Person Tracker. `npm run test:launch` fails until they exist.
+- [ ] A screenshot per project, WebP, about 1280x800 (16:10): LooPlanner, Space Mining, Skill Router, Person Tracker. `npm run test:launch` fails until they exist.
 - [ ] Optional: exact dark-theme colour values from Figma (current dark tokens are sampled by eye).
 
 ## Before deploy (Vercel side, not code)

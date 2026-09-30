@@ -4,7 +4,7 @@ const routes: [path: string, h1: string][] = [
   ['/', 'Ayrton Wong.'],
   ['/projects', "Things I've built."],
   ['/experience', 'Where I have worked.'],
-  ['/projects/uw-course-planner', 'UW Course Planner'],
+  ['/projects/looplanner', 'LooPlanner'],
   ['/projects/does-not-exist', 'Nothing here.'],
   ['/nope', 'Nothing here.'],
 ]
@@ -115,9 +115,9 @@ test('each page sets one title and one description', async ({ page }) => {
 
 test('projects: card opens detail, next and back links work', async ({ page }) => {
   await page.goto('/projects')
-  await page.getByRole('link', { name: 'UW Course Planner', exact: true }).click()
-  await expect(page).toHaveURL(/\/projects\/uw-course-planner$/)
-  await expect(page.getByRole('heading', { level: 1 })).toHaveAccessibleName('UW Course Planner')
+  await page.getByRole('link', { name: 'LooPlanner', exact: true }).click()
+  await expect(page).toHaveURL(/\/projects\/looplanner$/)
+  await expect(page.getByRole('heading', { level: 1 })).toHaveAccessibleName('LooPlanner')
   await page.getByRole('navigation', { name: 'Next project' }).getByRole('link').click()
   await expect(page).toHaveURL(/\/projects\/space-mining$/)
   await page.getByRole('link', { name: '← All projects' }).click()
@@ -142,4 +142,11 @@ test('experience: resume shows the image on phones', async ({ page }) => {
   await page.goto('/experience#resume')
   await expect(page.locator('img[src="/resume.png"]')).toHaveCount(1)
   await expect(page.locator('object')).toHaveCount(0)
+})
+
+test('planned project shows in Up next without a link', async ({ page }) => {
+  await page.goto('/projects')
+  const upNext = page.getByRole('region', { name: 'Up next' })
+  await expect(upNext.getByRole('heading', { name: 'GasBuddy Analytics' })).toBeVisible()
+  await expect(upNext.getByRole('link')).toHaveCount(0)
 })

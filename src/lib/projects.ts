@@ -15,7 +15,8 @@ export const getBySlug = (slug: string | undefined, list: readonly Project[] = p
   list.find((p) => p.slug === slug && p.status !== 'planned')
 
 /** "WIP" replaces the year while a project is in progress. */
-export const projectBadge = (p: Project) => (p.status === 'wip' ? 'WIP' : String(p.year))
+export const projectBadge = (p: Project) =>
+  p.status === 'wip' ? 'WIP' : p.year === undefined ? '' : String(p.year)
 
 /** The next listed project after `slug`, wrapping around; undefined when there is nothing else to show. */
 export function getNext(slug: string, list: readonly Project[] = projects) {

@@ -2,8 +2,8 @@ import type { Project } from './types'
 
 export const projects: readonly Project[] = [
   {
-    slug: 'uw-course-planner',
-    title: 'UW Course Planner',
+    slug: 'looplanner',
+    title: 'LooPlanner',
     year: 2026,
     status: 'done',
     featured: true,
@@ -15,7 +15,7 @@ export const projects: readonly Project[] = [
     slug: 'space-mining',
     title: 'Space Mining',
     year: 2026,
-    status: 'done',
+    status: 'wip',
     featured: true,
     summary: 'A Roblox game about mining asteroids and upgrading your ship.',
     tags: ['Luau', 'Roblox Studio'],
@@ -42,5 +42,14 @@ export const projects: readonly Project[] = [
     tags: ['Python', 'OpenCV', 'Raspberry Pi'],
     links: { github: 'https://github.com/harryliu1125/Person_Tracker' },
     collaborators: ['Harry Liu'],
+  },
+  {
+    // Planned: no repo, date or description yet, so only the title is shown.
+    slug: 'gasbuddy-analytics',
+    title: 'GasBuddy Analytics',
+    status: 'planned',
+    featured: false,
+    tags: [],
+    links: {},
   },
 ]

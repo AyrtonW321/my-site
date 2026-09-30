@@ -3,11 +3,12 @@ export type ProjectStatus = 'done' | 'wip' | 'planned'
 export interface Project {
   slug: string
   title: string
-  year: number | string
+  /** Omit for planned projects that have no date yet. */
+  year?: number | string
   status: ProjectStatus
   featured: boolean
-  /** One line for cards. */
-  summary: string
+  /** One line for cards. Required unless the project is only planned. */
+  summary?: string
   tags: string[]
   /** Imported asset URL; required for done/wip at launch. */
   thumbnail?: string

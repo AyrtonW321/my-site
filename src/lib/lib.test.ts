@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest'
 import type { Experience, Project } from '../content/types'
-import { experiencePeriod, getCurrentRole } from './experience'
+import { experiencePeriod, getCurrentRole, isCurrent } from './experience'
 import { formatDateRange, formatMonthYear } from './format'
 import {
   getBySlug,
@@ -62,6 +62,7 @@ describe('projects selectors', () => {
   it('shows WIP instead of the year', () => {
     expect(projectBadge(mk('x', { status: 'wip' }))).toBe('WIP')
     expect(projectBadge(mk('x'))).toBe('2026')
+    expect(projectBadge(mk('x', { year: undefined }))).toBe('')
   })
 })
 
@@ -78,6 +79,20 @@ describe('experience selectors', () => {
   it('picks the first current role', () => {
     const list = [role('old', { end: '2020-01' }), role('now', {}), role('also', {})]
     expect(getCurrentRole(list)?.id).toBe('now')
+  })
+
+  it('treats a role as current until the end of its last month', () => {
+    const coop = role('coop', { end: '2026-12' })
+    expect(isCurrent(coop, new Date(2026, 8, 29))).toBe(true) // Sep 2026
+    expect(isCurrent(coop, new Date(2026, 11, 31))).toBe(true) // Dec 2026
+    expect(isCurrent(coop, new Date(2027, 0, 1))).toBe(false) // Jan 2027
+    expect(isCurrent(role('open', {}), new Date(2040, 0, 1))).toBe(true)
+  })
+
+  it('moves the current role on once the co-op ends', () => {
+    const list = [role('coop', { end: '2026-12' }), role('part-time', {})]
+    expect(getCurrentRole(list, new Date(2026, 9, 1))?.id).toBe('coop')
+    expect(getCurrentRole(list, new Date(2027, 0, 1))?.id).toBe('part-time')
   })
 
   it('uses the label in place of dates', () => {

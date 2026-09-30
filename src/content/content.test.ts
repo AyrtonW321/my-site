@@ -31,6 +31,13 @@ describe('content integrity (always on)', () => {
     }
   })
 
+  it('gives every browsable project a summary and a year', () => {
+    for (const p of projects.filter((p) => p.status !== 'planned')) {
+      expect(p.summary, p.slug).toBeTruthy()
+      expect(p.year, p.slug).toBeDefined()
+    }
+  })
+
   it('has unique experience ids', () => {
     const ids = experience.map((e) => e.id)
     expect(new Set(ids).size).toBe(ids.length)

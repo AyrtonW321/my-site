@@ -32,7 +32,9 @@ export function ProjectCard({ project, index, headingLevel = 3 }: Props) {
           </Heading>
           <span className="font-mono text-[11px] text-text-3">{projectBadge(project)}</span>
         </div>
-        <p className="mt-2 px-2 text-sm leading-relaxed text-text-2">{project.summary}</p>
+        {project.summary && (
+          <p className="mt-2 px-2 text-sm leading-relaxed text-text-2">{project.summary}</p>
+        )}
         <div className="mt-4 flex items-center gap-2 px-2">
           <ul className="flex flex-wrap gap-2">
             {project.tags.map((tag) => (

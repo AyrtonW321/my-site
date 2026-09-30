@@ -11,7 +11,7 @@ export const experience: readonly Experience[] = [
     location: 'Markham',
     label: 'CO-OP',
     start: '2026-09',
-    end: null,
+    end: '2026-12',
     summary:
       'Outreach for solar and lighting energy assessments through SaveOnEnergy incentive programs.',
   },
@@ -45,7 +45,7 @@ export const experience: readonly Experience[] = [
   },
   {
     id: 'trademark-industries',
-    role: 'Sales Assistant',
+    role: 'Sales Associate & Warehouse Packer',
     company: 'Trademark Industries Canada',
     kind: 'Co-op',
     location: 'Markham',

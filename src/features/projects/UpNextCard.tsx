@@ -12,7 +12,9 @@ export function UpNextCard({ project }: { project: Project }) {
           Planned
         </span>
       </div>
-      <p className="mt-2 text-sm leading-relaxed text-text-2">{project.summary}</p>
+      {project.summary && (
+        <p className="mt-2 text-sm leading-relaxed text-text-2">{project.summary}</p>
+      )}
       {project.tags.length > 0 && (
         <ul className="mt-4 flex flex-wrap gap-2">
           {project.tags.map((tag) => (

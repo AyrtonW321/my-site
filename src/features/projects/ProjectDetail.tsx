@@ -51,12 +51,19 @@ export function ProjectDetail({ project }: { project: Project }) {
       </Link>
       <header className="mt-4 md:mt-6">
         <Label className="text-[11px]">
-          <span className="text-accent-text">{project.year}</span> / Project
+          {project.year !== undefined && (
+            <>
+              <span className="text-accent-text">{project.year}</span> /{' '}
+            </>
+          )}
+          Project
         </Label>
         <h1 className="mt-3 text-[40px] leading-[1.05] font-semibold tracking-[-0.04em] md:text-6xl">
           {project.title}
         </h1>
-        <p className="mt-4 max-w-2xl text-lg leading-relaxed text-text-2">{project.summary}</p>
+        {project.summary && (
+          <p className="mt-4 max-w-2xl text-lg leading-relaxed text-text-2">{project.summary}</p>
+        )}
         {(github || live) && (
           <div className="mt-6 flex flex-wrap gap-3">
             {github && (
@@ -91,7 +98,7 @@ export function ProjectDetail({ project }: { project: Project }) {
         <aside aria-label="Project details" className="self-start md:sticky md:top-28">
           <dl className="space-y-6 border-t pt-6 md:border-t-0 md:pt-0">
             <Fact label="Status">{statusLabel(project)}</Fact>
-            <Fact label="Year">{project.year}</Fact>
+            {project.year !== undefined && <Fact label="Year">{project.year}</Fact>}
             {project.tags.length > 0 && (
               <Fact label="Built with">
                 <ul className="flex flex-wrap gap-2">
