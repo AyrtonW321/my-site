@@ -46,14 +46,14 @@ Defined in `src/index.css`. Fonts: Geist + Geist Mono (`@fontsource-variable`, 5
 ## Deviations from Figma
 
 1. **`text-3` contrast.** Figma `#9d9da6` on `#fafaf9` ≈ 2.6:1. `--text-3` is now `#6b6b74` (≥4.5:1 on bg, surface, surface-2) for small text; the Figma value survives as `--text-decor` for purely decorative marks. Dark `--text-3` is `#85858e` (Figma-sampled `#71717a` ≈ 4.1:1 fails); `#71717a` is dark `--text-decor`.
-2. **Accent on small text.** `#07b2f8` on light ≈ 2.4:1. New `--accent-text` `#026fa1` for small light-mode text (tagline, company names). Brand `#07b2f8` stays for the hero "Wong.", bars, dots, and all of dark mode. Hero "Wong." is the one deliberate AA exception (identity choice).
+2. **Accent on small text.** `#07b2f8` on light ≈ 2.4:1. New `--accent-text` `#026fa1` for small light-mode text (tagline, company names). Brand `#07b2f8` stays for bars, dots, and all of dark mode. Large display type (hero "Wong.", contact "something.") uses `--accent-display` `#0894d3` (3.3:1) on light instead of the brand cyan (see 9).
 3. Uni email line under the Gmail button (not in Figma).
 4. Résumé "UPDATED SEP 2026" comes from `profile.resume.updated`, never hardcoded.
 5. Mobile menu dropdown contents and style (not in Figma).
 6. Desktop "View all ↗" pill and mobile "View all projects ↗" button both link to `/projects`.
 7. **React Router 7.x** (latest published is 7.18; the plan assumed 8.x). Same data-router API.
 8. CI runs lint, typecheck, unit tests, build and the Playwright e2e suite (added in M7).
-9. **Large display accent.** The contact heading's "something." uses brand `#07b2f8` on light (large text, identity choice, same exception as the hero "Wong.").
+9. **Large display accent.** Ayrton chose to darken the brand cyan for large display type on light backgrounds: `--accent-display` is `#0894d3` (3.3:1, passes the 3:1 large-text bar) for the hero "Wong." and contact "something."; dark mode keeps `#07b2f8`. The axe suite no longer needs any exclusions.
 10. **Experience data.** More roles than the Figma shows (Trademark Industries, The STEAM Project, Richmond Hill Public Library) come from Ayrton's LinkedIn. The homepage shows the first three; `/experience` shows all. A "Full timeline ↗" button is added under the homepage list.
 11. **Project media** has no "[ screenshot / demo loop ]" caption; an empty tinted block is used until real screenshots land (no placeholder text ships).
 12. **Contact** section heading is the big "Let's build something." (its `<h2>`); there is no separate title. LinkedIn controls are hidden until `profile.links.linkedin` is set.
@@ -63,3 +63,8 @@ Defined in `src/index.css`. Fonts: Geist + Geist Mono (`@fontsource-variable`, 5
 16. **Static meta values** (canonical, Open Graph, Twitter) are site-level and point at the homepage for every route; there is no prerendering. `content.test.ts` checks the static description matches `profile.description`.
 17. **`/projects`, `/projects/:slug` and `/experience` are designed without Figma** (Ayrton delegated them, Oct 2026). They reuse the homepage tokens, label style, cards and timeline rhythm. Everything optional (write-up, links, collaborators, thumbnails, bullets) renders nothing when absent, so no placeholder text is needed. Page h1s reuse the homepage section titles ("Things I've built.", "Where I have worked."). Adjust freely once Ayrton has opinions.
 18. **Résumé panel** loads nothing until opened, then embeds the PDF at `md` and up and shows the page-1 PNG below that (chosen with a media query, not CSS hiding, so phones never fetch the PDF). The Download button sits outside the `<details>` so it is always visible.
+19. **Copy edits (Ayrton, Oct 2026):** About intro card is just the headline (the four "i like…" lines were cut as corny); intro tagline is "I like to build tools for problems that I have."; MATLAB removed from the toolbox; "Cold" dropped from "Cold outreach"; Haneco title is "Energy Specialist" (LinkedIn's "Sales Representative" is not used); other titles unchanged.
+20. **Resume tile** on the hero reads "Check out my resume" and links to the preview panel (`/experience#resume`) instead of forcing a download. The panel keeps its Download PDF button.
+21. **GitHub links**: project cards get a small GitHub pill (top of the stack above the stretched title link, so the card stays one big link without nesting anchors); the project page has a GitHub button. Only projects with a known repo show them.
+22. **Ambient background** (`.bg-art`): a faint dot grid that fades down the viewport plus two very slow accent glows, all CSS, fixed behind content, motion off under reduced motion.
+23. **Theme transition** slowed to about 1.3s and reworked: the new theme spreads from the toggle as a soft-edged wave and blooms through a grid of growing dots until it covers the screen (`@property` + mask; falls back to an instant switch where unsupported). The toggle icon also spins.

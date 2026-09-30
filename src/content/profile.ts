@@ -11,17 +11,11 @@ export const profile: Profile = {
     'Applied Mathematics student at the University of Waterloo, concentrating in Scientific Computing and Machine Learning. Projects, experience and contact.',
   intro: {
     lead: "I'm an Applied Mathematics student at the University of Waterloo, concentrating in Scientific Computing and Machine Learning.",
-    body: 'I build tools for problems I actually have.',
+    body: 'I like to build tools for problems that I have.',
   },
   building: { verb: 'is building', subject: 'a course planner' },
-  aboutLines: [
-    'i like math that ends up running on a computer.',
-    'i care about tools that save people time.',
-    'i teach kids math at Kumon, which keeps my explanations simple.',
-    'i play badminton a few times a week and lift every day.',
-  ],
   basedIn: { from: 'Markham, ON', to: 'Waterloo, ON' },
-  toolbox: ['Python', 'C', 'TypeScript', 'React', 'Firebase', 'Luau', 'MATLAB', 'Figma'],
+  toolbox: ['Python', 'C', 'TypeScript', 'React', 'Firebase', 'Luau', 'Figma'],
   offTheClock: [
     { activity: 'Badminton', cadence: '2–3× / week' },
     { activity: 'Gym', cadence: 'daily' },
@@ -40,7 +34,9 @@ export const profile: Profile = {
   },
   emails: { primary: 'ayrtonwongg@gmail.com', school: 'a393wong@uwaterloo.ca' },
   githubHandle: 'AyrtonW321',
-  // linkedin: added in M8 once Ayrton supplies the URL
-  links: { github: 'https://github.com/AyrtonW321' },
+  links: {
+    github: 'https://github.com/AyrtonW321',
+    linkedin: 'https://www.linkedin.com/in/ayrton-wong-312445303/',
+  },
   resume: { pdf: '/resume.pdf', preview: '/resume.png', updated: '2026-09' },
 }

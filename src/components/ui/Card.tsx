@@ -12,7 +12,7 @@ export function Card({ className, interactive, ...props }: Props) {
       className={cn(
         'rounded-[20px] border bg-surface p-6',
         interactive &&
-          'transition-[transform,border-color] group-hover:-translate-y-0.5 group-hover:border-accent group-focus-visible:-translate-y-0.5 group-focus-visible:border-accent',
+          'transition-[transform,border-color] group-focus-within:-translate-y-0.5 group-focus-within:border-accent group-hover:-translate-y-0.5 group-hover:border-accent',
         className,
       )}
       {...props}

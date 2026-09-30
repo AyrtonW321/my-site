@@ -27,8 +27,6 @@ export interface Experience {
   kind?: 'Co-op' | 'Part-time' | 'Volunteer'
   /** Shown in place of the date range, e.g. "CO-OP". */
   label?: string
-  /** Short title for the About "Now" card, e.g. "Energy Specialist". */
-  shortRole?: string
   /** 'YYYY-MM' */
   start?: string
   /** 'YYYY-MM'; null = current */
@@ -48,7 +46,6 @@ export interface Profile {
   description: string
   intro: { lead: string; body: string }
   building: { verb: string; subject: string }
-  aboutLines: string[]
   basedIn: { from: string; to: string }
   toolbox: string[]
   offTheClock: { activity: string; cadence: string }[]

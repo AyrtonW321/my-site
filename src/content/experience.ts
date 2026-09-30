@@ -5,16 +5,15 @@ import type { Experience } from './types'
 export const experience: readonly Experience[] = [
   {
     id: 'haneco-energy',
-    role: 'Energy Specialist + Sales Rep',
+    role: 'Energy Specialist',
     company: 'Haneco Energy',
     kind: 'Co-op',
     location: 'Markham',
     label: 'CO-OP',
-    shortRole: 'Energy Specialist',
     start: '2026-09',
     end: null,
     summary:
-      'Cold outreach for solar and lighting energy assessments through SaveOnEnergy incentive programs.',
+      'Outreach for solar and lighting energy assessments through SaveOnEnergy incentive programs.',
   },
   {
     id: 'kumon-markham',

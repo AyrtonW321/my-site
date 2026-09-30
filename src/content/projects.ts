@@ -1,6 +1,5 @@
 import type { Project } from './types'
 
-// Person Tracker is omitted until its write-up is real (no placeholder text ships).
 export const projects: readonly Project[] = [
   {
     slug: 'uw-course-planner',
@@ -10,7 +9,7 @@ export const projects: readonly Project[] = [
     featured: true,
     summary: 'Plan a Waterloo degree with an AI agent that checks prerequisites for you.',
     tags: ['React', 'TypeScript', 'Firebase', 'Gemini'],
-    links: {},
+    links: { github: 'https://github.com/AyrtonW321/LooPlanner' },
   },
   {
     slug: 'space-mining',
@@ -31,5 +30,17 @@ export const projects: readonly Project[] = [
     summary: 'Routes each request to the right Claude skill so a big library stays fast.',
     tags: ['LLM tooling', 'Claude'],
     links: {},
+  },
+  {
+    slug: 'person-tracker',
+    title: 'Person Tracker',
+    year: 2025,
+    status: 'done',
+    featured: true,
+    summary:
+      'Tracks a person on live video from a Raspberry Pi and steers a pan–tilt camera to keep them centered.',
+    tags: ['Python', 'OpenCV', 'Raspberry Pi'],
+    links: { github: 'https://github.com/harryliu1125/Person_Tracker' },
+    collaborators: ['Harry Liu'],
   },
 ]

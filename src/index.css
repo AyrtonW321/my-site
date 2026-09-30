@@ -14,6 +14,8 @@
   --border: #e6e6e8;
   --accent: #07b2f8;
   --accent-text: #026fa1; /* AA-safe accent for small text */
+  --accent-display: #0894d3; /* brand cyan darkened to 3.3:1 for large display type */
+  --glow: 14%;
   --accent-soft: #e6f7fe;
   --success: #16a34a;
   --nav-bg: #ffffffc7;
@@ -32,6 +34,8 @@
   --border: #232327;
   --accent: #07b2f8;
   --accent-text: #07b2f8;
+  --accent-display: #07b2f8;
+  --glow: 15%;
   --accent-soft: #072a3a;
   --success: #22c55e;
   --nav-bg: #111113c7;
@@ -49,6 +53,7 @@
   --color-border: var(--border);
   --color-accent: var(--accent);
   --color-accent-text: var(--accent-text);
+  --color-accent-display: var(--accent-display);
   --color-accent-soft: var(--accent-soft);
   --color-success: var(--success);
   --color-nav-bg: var(--nav-bg);
@@ -100,21 +105,131 @@
   scroll-margin-top: 6rem;
 }
 
-/* Theme switch: the new theme grows as a circle from the toggle. */
+/* Theme switch: the new theme spreads from the toggle as a soft-edged wave, and inside the
+   wave it blooms through a grid of growing dots ("pixels") until the screen is fully covered.
+   Browsers without @property or masks fall back to an instant switch. */
+@property --pix-r {
+  syntax: '<percentage>';
+  inherits: false;
+  initial-value: 100%;
+}
+@property --reach {
+  syntax: '<length>';
+  inherits: false;
+  initial-value: 400vmax;
+}
 ::view-transition-old(root),
 ::view-transition-new(root) {
   animation: none;
   mix-blend-mode: normal;
 }
 ::view-transition-new(root) {
-  animation: theme-reveal 500ms var(--ease-out) both;
+  -webkit-mask-image:
+    radial-gradient(
+      circle farthest-corner at center,
+      #000 var(--pix-r),
+      transparent calc(var(--pix-r) + 0.5px)
+    ),
+    radial-gradient(
+      circle at var(--vt-x, 50%) var(--vt-y, 0px),
+      #000 calc(var(--reach) - 22vmax),
+      transparent var(--reach)
+    );
+  mask-image:
+    radial-gradient(
+      circle farthest-corner at center,
+      #000 var(--pix-r),
+      transparent calc(var(--pix-r) + 0.5px)
+    ),
+    radial-gradient(
+      circle at var(--vt-x, 50%) var(--vt-y, 0px),
+      #000 calc(var(--reach) - 22vmax),
+      transparent var(--reach)
+    );
+  -webkit-mask-size:
+    20px 20px,
+    100% 100%;
+  mask-size:
+    20px 20px,
+    100% 100%;
+  -webkit-mask-composite: source-in;
+  mask-composite: intersect;
+  animation:
+    theme-reach 1300ms cubic-bezier(0.6, 0.02, 0.3, 1) both,
+    theme-pix 850ms cubic-bezier(0.3, 0, 0.2, 1) 350ms both;
 }
-@keyframes theme-reveal {
+@keyframes theme-reach {
   from {
-    clip-path: circle(0 at var(--vt-x, 50%) var(--vt-y, 0));
+    --reach: 0px;
   }
   to {
-    clip-path: circle(150vmax at var(--vt-x, 50%) var(--vt-y, 0));
+    --reach: 190vmax;
+  }
+}
+@keyframes theme-pix {
+  from {
+    --pix-r: 0%;
+  }
+  to {
+    --pix-r: 100%;
+  }
+}
+
+/* Ambient background: a faint dot grid fading out down the viewport, plus two slow accent glows. */
+.bg-art {
+  position: fixed;
+  inset: 0;
+  z-index: -10;
+  overflow: hidden;
+  pointer-events: none;
+}
+.bg-art::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background-image: radial-gradient(
+    color-mix(in srgb, var(--text) 18%, transparent) 1px,
+    transparent 1.3px
+  );
+  background-size: 26px 26px;
+  -webkit-mask-image: radial-gradient(ellipse 90% 75% at 50% 0%, #000 0%, transparent 75%);
+  mask-image: radial-gradient(ellipse 90% 75% at 50% 0%, #000 0%, transparent 75%);
+}
+.bg-glow {
+  position: absolute;
+  width: 70vmax;
+  height: 70vmax;
+  border-radius: 50%;
+  background: radial-gradient(
+    closest-side,
+    color-mix(in srgb, var(--accent) var(--glow), transparent),
+    transparent
+  );
+  will-change: transform;
+}
+.bg-glow-a {
+  top: -32vmax;
+  left: -18vmax;
+  animation: glow-a 30s ease-in-out infinite alternate;
+}
+.bg-glow-b {
+  right: -22vmax;
+  bottom: -38vmax;
+  animation: glow-b 38s ease-in-out infinite alternate;
+}
+@keyframes glow-a {
+  to {
+    transform: translate3d(20vmax, 14vmax, 0) scale(1.12);
+  }
+}
+@keyframes glow-b {
+  to {
+    transform: translate3d(-18vmax, -10vmax, 0) scale(1.15);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .bg-glow {
+    animation: none;
   }
 }
 

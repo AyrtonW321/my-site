@@ -17,7 +17,7 @@ export function ContactSection() {
           id="contact-title"
           className="text-[40px] leading-[1.05] font-semibold tracking-[-0.04em] sm:text-6xl md:text-[72px]"
         >
-          {lead} <span className="text-accent">{accent}</span>
+          {lead} <span className="text-accent-display">{accent}</span>
         </h2>
         <p className="mt-6 max-w-xl leading-relaxed text-text-2">{blurb}</p>
         <div className="mt-8 flex flex-wrap gap-3">

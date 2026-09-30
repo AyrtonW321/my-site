@@ -115,7 +115,7 @@ test('each page sets one title and one description', async ({ page }) => {
 
 test('projects: card opens detail, next and back links work', async ({ page }) => {
   await page.goto('/projects')
-  await page.getByRole('link', { name: /UW Course Planner/ }).click()
+  await page.getByRole('link', { name: 'UW Course Planner', exact: true }).click()
   await expect(page).toHaveURL(/\/projects\/uw-course-planner$/)
   await expect(page.getByRole('heading', { level: 1 })).toHaveAccessibleName('UW Course Planner')
   await page.getByRole('navigation', { name: 'Next project' }).getByRole('link').click()

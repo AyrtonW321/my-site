@@ -14,7 +14,7 @@ export function NowCard() {
       <div>
         <Label>{experiencePeriod(role)}</Label>
         <h3 className="mt-2 text-xl leading-snug font-medium tracking-tight">
-          {role.shortRole ?? role.role} at {role.company}
+          {role.role} at {role.company}
         </h3>
         {role.summary && <p className="mt-3 text-sm leading-relaxed text-text-2">{role.summary}</p>}
       </div>

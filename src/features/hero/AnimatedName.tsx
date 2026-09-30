@@ -29,7 +29,7 @@ export function AnimatedName() {
       <span aria-hidden="true" className="block">
         <Letters text={first} offset={0} />
       </span>
-      <span aria-hidden="true" className="block text-accent">
+      <span aria-hidden="true" className="block text-accent-display">
         <Letters text={`${last}.`} offset={first.length} />
       </span>
     </h1>
