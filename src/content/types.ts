@@ -46,7 +46,14 @@ export interface Profile {
   tagline: string[]
   description: string
   intro: { lead: string; body: string }
-  building: { verb: string; subject: string }
+  building: {
+    verb: string
+    subject: string
+    /** Line above the current-project box. */
+    callout: string
+    /** Which project the box shows. */
+    projectSlug: string
+  }
   basedIn: { from: string; to: string }
   toolbox: string[]
   offTheClock: { activity: string; cadence: string }[]
