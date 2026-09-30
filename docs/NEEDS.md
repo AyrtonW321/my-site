@@ -3,14 +3,10 @@
 Kept current by whoever works on the site. Tick items off (and delete them) as they land.
 Nothing here may be faked: the content test and the launch gate (`npm run test:launch`) exist to stop placeholders shipping.
 
-## Resume (needs your decision first)
+## Resume
 
-- [ ] **The resume PDF contains your phone number.** The site spec says no phone number anywhere, and this repo is public (it would also be downloadable from the live site). Either send a version without the phone number, or confirm it should be published as-is. Until then `public/resume.pdf` and `public/resume.png` are NOT in the repo, so the download link and preview are broken. Once decided I add the PDF and render the page-1 PNG.
-- [ ] **Update the resume to match the site** (site values are the ones you confirmed):
-  - Kumon Richmond Hill starts Mar 2022 (resume says Mar 2021).
-  - The project is now called **LooPlanner** (resume says "UW Course Planner").
-  - Trademark title on the site is now "Sales Associate & Warehouse Packer" (company still "Trademark Industries Canada" on the site vs "Trademark Industries Inc." on the resume; tell me if the company name should change too).
-  - Space Mining is in progress on both.
+- [ ] The published resume is the PDF you sent (Ayrton chose to keep it as-is, phone number included, Oct 2026). It still says Kumon Richmond Hill started Mar 2021, calls the course planner "UW Course Planner" and lists Haneco as "Sales Representative / Energy Specialist". When you have an updated PDF, send it: replace `public/resume.pdf` and regenerate `public/resume.png` (page 1 as an image; ask and I will do it), and bump `resume.updated` in `src/content/profile.ts`.
+- [ ] Site vs resume still differ on: Kumon titles ("Assistant Tutor" on the resume), Trademark company name ("Inc." vs "Canada"), and Space Mining collaborator names.
 
 ## Projects
 

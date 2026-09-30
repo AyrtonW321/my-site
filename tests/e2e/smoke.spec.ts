@@ -150,3 +150,12 @@ test('planned project shows in Up next without a link', async ({ page }) => {
   await expect(upNext.getByRole('heading', { name: 'GasBuddy Analytics' })).toBeVisible()
   await expect(upNext.getByRole('link')).toHaveCount(0)
 })
+
+test('resume files are served', async ({ request }) => {
+  const pdf = await request.get('/resume.pdf')
+  expect(pdf.status()).toBe(200)
+  expect(pdf.headers()['content-type']).toContain('application/pdf')
+  const png = await request.get('/resume.png')
+  expect(png.status()).toBe(200)
+  expect(png.headers()['content-type']).toContain('image/png')
+})
