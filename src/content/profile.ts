@@ -15,9 +15,9 @@ export const profile: Profile = {
   },
   building: {
     verb: 'is building',
-    subject: 'a course planner',
+    subject: 'a lead tracker',
     callout: "Look at what I'm making right now",
-    projectSlug: 'looplanner',
+    projectSlug: 'lumen',
   },
   basedIn: { from: 'Markham, ON', to: 'Waterloo, ON' },
   toolbox: ['Python', 'C', 'TypeScript', 'React', 'Firebase', 'Luau', 'Figma'],

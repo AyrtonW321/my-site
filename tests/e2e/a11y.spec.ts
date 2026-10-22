@@ -8,7 +8,7 @@ for (const theme of ['light', 'dark'] as const) {
   for (const path of [
     '/',
     '/projects',
-    '/projects/skill-router',
+    '/projects/lumen',
     '/projects/person-tracker',
     '/experience',
     '/nope',
