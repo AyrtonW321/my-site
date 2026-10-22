@@ -44,12 +44,25 @@ export const projects: readonly Project[] = [
     collaborators: ['Harry Liu'],
   },
   {
-    // Planned: no repo, date or description yet, so only the title is shown.
-    slug: 'gasbuddy-analytics',
-    title: 'GasBuddy Analytics',
-    status: 'planned',
+    slug: 'lumen',
+    title: 'Lumen',
+    year: 2026,
+    status: 'wip',
     featured: false,
-    tags: [],
+    summary:
+      'A Python call-logging tool for Haneco cold calling that flags which leads need a follow-up, with a PyTorch lead-grading model in the works.',
+    tags: ['Python', 'PyTorch'],
+    links: {},
+  },
+  {
+    slug: 'fillsight',
+    title: 'Fillsight',
+    year: 2026,
+    status: 'wip',
+    featured: false,
+    summary:
+      'A GasBuddy alternative for the Greater Toronto Area with historical and intraday gas prices and the cheapest stations nearby.',
+    tags: ['React', 'TypeScript', 'Vite'],
     links: {},
   },
 ]

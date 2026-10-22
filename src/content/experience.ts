@@ -14,21 +14,31 @@ export const experience: readonly Experience[] = [
     end: '2026-12',
     summary:
       'Outreach for solar and lighting energy assessments through SaveOnEnergy incentive programs.',
+    bullets: [
+      'Call around 50 leads per day to book business meetings, working toward a target of 10 booked meetings per week',
+      'Use ZoomInfo to find decision-makers at target companies and log every call outcome and follow-up in MyPhoner (CRM)',
+      'Send outreach emails to businesses to follow up on leads and open new conversations',
+      'Inform business owners about government incentive and rebate programs, such as Save on Energy, for lighting and solar upgrades',
+    ],
   },
   {
     id: 'kumon-markham',
-    role: 'Online Program Instructor',
+    role: 'Assistant Tutor',
     company: 'Kumon',
     kind: 'Part-time',
     location: 'Markham',
     start: '2026-06',
     end: null,
     summary:
-      'Run the online program on my own. Teach students live, mark their work, and keep results up to date in the database.',
+      "In charge of about 80% of the centre's online tutoring, and the marking for all of it.",
+    bullets: [
+      "In charge of about 80% of the centre's online tutoring, making sure online students are well supported outside the classroom",
+      "Mark all online student submissions and return graded work, covering the centre's complete online marking load",
+    ],
   },
   {
     id: 'kumon-richmond-hill',
-    role: 'Instructor',
+    role: 'Assistant Tutor',
     company: 'Kumon',
     kind: 'Part-time',
     location: 'Richmond Hill',
@@ -37,16 +47,15 @@ export const experience: readonly Experience[] = [
     summary:
       'Three and a half years helping students with math and reading, one worksheet at a time.',
     bullets: [
-      'Supported students from early elementary to high school in math and reading',
-      'Managed a busy classroom environment, ensuring smooth student flow and maintaining engagement',
-      'Provided homework assistance and progress feedback to students and parents',
-      'Ensured accurate marking and data entry to track student progress',
+      'Tutored 50+ students per week across elementary to Grade 12 levels in math and reading, adapting to different learning styles',
+      'Managed a busy classroom of 30+ students at once, keeping things organized, on track, and running smoothly',
+      'Gave parents regular progress updates and kept 100% accuracy in marking, data entry, and student progress tracking',
     ],
   },
   {
     id: 'trademark-industries',
     role: 'Sales Associate & Warehouse Packer',
-    company: 'Trademark Industries Canada',
+    company: 'Trademark Industries Inc.',
     kind: 'Co-op',
     location: 'Markham',
     start: '2023-09',
@@ -54,10 +63,10 @@ export const experience: readonly Experience[] = [
     summary:
       'Marketing, packaging and distribution for e-commerce and retail, plus sales floor and order prep.',
     bullets: [
-      'Assisted in marketing, packaging, and distribution for e-commerce and retail operations',
-      'Managed sales floor tasks, including customer service, inventory organization, and product restocking',
-      'Prepared outgoing orders, ensuring accurate packaging and timely shipment',
-      'Collaborated with warehouse, sales and marketing teams',
+      'Handled customer service, inventory management, and restocking on a high-volume sales floor',
+      'Used Shopify, RocketReach, and Excel to organize order data, support customer outreach, and keep distribution running efficiently',
+      'Packed and shipped 50–100+ orders daily, including large-scale fulfillment for Walmart, Costco, Home Depot, and Canadian Tire',
+      'Created and managed social media content for TikTok and Instagram to grow product visibility and customer outreach',
     ],
   },
   {

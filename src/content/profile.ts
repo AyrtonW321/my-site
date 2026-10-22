@@ -43,5 +43,5 @@ export const profile: Profile = {
     github: 'https://github.com/AyrtonW321',
     linkedin: 'https://www.linkedin.com/in/ayrton-wong-312445303/',
   },
-  resume: { pdf: '/resume.pdf', preview: '/resume.png', updated: '2026-09' },
+  resume: { pdf: '/resume.pdf', preview: '/resume.png', updated: '2026-10' },
 }
