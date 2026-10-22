@@ -10,8 +10,7 @@ Nothing here may be faked: the content test and the launch gate (`npm run test:l
 
 ## Projects
 
-- [ ] **GitHub links still missing** for Space Mining and Tech Store (no repos yet). Send URLs when they exist; the pill and button appear automatically.
-- [ ] **Tech Store** (Roblox game) is on the site with a working title and a one-line summary only. Send the real name, a better description and a year if it differs.
+- [ ] **GitHub links still missing** for Space Mining and Electronic Empire (no repos yet). Send URLs when they exist; the pill and button appear automatically.
 - [ ] Space Mining is a collaborative project on your resume: send the collaborator name(s) if you want them credited on its page.
 - [ ] **Person Tracker** uses `harryliu1125/Person_Tracker`. Year (2025) and tags (Python, OpenCV, Raspberry Pi) come from your resume; status is set to completed. Confirm.
 - [ ] Write-ups per project (`body` in `src/content/projects.ts`) once the GitHub READMEs exist. Pages work without them.
@@ -20,7 +19,7 @@ Nothing here may be faked: the content test and the launch gate (`npm run test:l
 
 ## Blocks launch (M8)
 
-- [ ] A screenshot per project, WebP, about 1280x800 (16:10): Lumen, Fillsight, Tech Store, LooPlanner, Space Mining, Person Tracker. `npm run test:launch` fails until they exist.
+- [ ] A screenshot per project, WebP, about 1280x800 (16:10): Lumen, Fillsight, Electronic Empire, LooPlanner, Space Mining, Person Tracker. `npm run test:launch` fails until they exist.
 - [ ] Optional: exact dark-theme colour values from Figma (current dark tokens are sampled by eye).
 
 ## Before deploy (Vercel side, not code)
