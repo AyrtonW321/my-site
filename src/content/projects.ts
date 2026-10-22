@@ -24,8 +24,8 @@ export const projects: readonly Project[] = [
     links: { github: 'https://github.com/AyrtonW321/Fillsight' },
   },
   {
-    slug: 'tech-store',
-    title: 'Tech Store',
+    slug: 'electronic-empire',
+    title: 'Electronic Empire',
     year: 2026,
     status: 'wip',
     featured: true,
