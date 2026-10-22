@@ -2,6 +2,38 @@ import type { Project } from './types'
 
 export const projects: readonly Project[] = [
   {
+    slug: 'lumen',
+    title: 'Lumen',
+    year: 2026,
+    status: 'wip',
+    featured: true,
+    summary:
+      'A local lead tracker and call logger that ranks leads with a PyTorch model and suggests the next step.',
+    tags: ['Python', 'PyTorch', 'SQLite', 'TypeScript'],
+    links: { github: 'https://github.com/AyrtonW321/Lumen' },
+  },
+  {
+    slug: 'fillsight',
+    title: 'Fillsight',
+    year: 2026,
+    status: 'wip',
+    featured: true,
+    summary:
+      'Fuel-price analytics for the Greater Toronto Area: a station explorer, price history and insights, currently a demo on sample data.',
+    tags: ['React', 'TypeScript', 'Vite'],
+    links: { github: 'https://github.com/AyrtonW321/Fillsight' },
+  },
+  {
+    slug: 'tech-store',
+    title: 'Tech Store',
+    year: 2026,
+    status: 'wip',
+    featured: true,
+    summary: 'A Roblox game about running a tech store.',
+    tags: ['Luau', 'Roblox Studio'],
+    links: {},
+  },
+  {
     slug: 'looplanner',
     title: 'LooPlanner',
     year: 2026,
@@ -16,19 +48,9 @@ export const projects: readonly Project[] = [
     title: 'Space Mining',
     year: 2026,
     status: 'wip',
-    featured: true,
+    featured: false,
     summary: 'A Roblox game about mining asteroids and upgrading your ship.',
     tags: ['Luau', 'Roblox Studio'],
-    links: {},
-  },
-  {
-    slug: 'skill-router',
-    title: 'Skill Router',
-    year: 2026,
-    status: 'wip',
-    featured: true,
-    summary: 'Routes each request to the right Claude skill so a big library stays fast.',
-    tags: ['LLM tooling', 'Claude'],
     links: {},
   },
   {
@@ -36,33 +58,11 @@ export const projects: readonly Project[] = [
     title: 'Person Tracker',
     year: 2025,
     status: 'done',
-    featured: true,
+    featured: false,
     summary:
       'Tracks a person on live video from a Raspberry Pi and steers a pan–tilt camera to keep them centered.',
     tags: ['Python', 'OpenCV', 'Raspberry Pi'],
     links: { github: 'https://github.com/harryliu1125/Person_Tracker' },
     collaborators: ['Harry Liu'],
-  },
-  {
-    slug: 'lumen',
-    title: 'Lumen',
-    year: 2026,
-    status: 'wip',
-    featured: false,
-    summary:
-      'A Python call-logging tool for Haneco cold calling that flags which leads need a follow-up, with a PyTorch lead-grading model in the works.',
-    tags: ['Python', 'PyTorch'],
-    links: {},
-  },
-  {
-    slug: 'fillsight',
-    title: 'Fillsight',
-    year: 2026,
-    status: 'wip',
-    featured: false,
-    summary:
-      'A GasBuddy alternative for the Greater Toronto Area with historical and intraday gas prices and the cheapest stations nearby.',
-    tags: ['React', 'TypeScript', 'Vite'],
-    links: {},
   },
 ]
