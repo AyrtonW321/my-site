@@ -5,13 +5,12 @@ Nothing here may be faked: the content test and the launch gate (`npm run test:l
 
 ## Resume
 
-- [ ] The published resume is the PDF you sent (Ayrton chose to keep it as-is, phone number included, Oct 2026). It still says Kumon Richmond Hill started Mar 2021, calls the course planner "UW Course Planner" and lists Haneco as "Sales Representative / Energy Specialist". When you have an updated PDF, send it: replace `public/resume.pdf` and regenerate `public/resume.png` (page 1 as an image; ask and I will do it), and bump `resume.updated` in `src/content/profile.ts`.
-- [ ] Site vs resume still differ on: Kumon titles ("Assistant Tutor" on the resume), Trademark company name ("Inc." vs "Canada"), and Space Mining collaborator names.
+- [ ] Published resume is the Oct 2026 PDF (phone number included). It says Kumon Richmond Hill started Mar 2021, but the site shows Mar 2022 ("three and a half years"). Confirm which is right and fix the other.
+- [ ] Space Mining is no longer on the resume (replaced by Lumen and Fillsight). It is still on the site; say if it should come off.
 
 ## Projects
 
-- [ ] **GitHub links still missing** for Space Mining, Skill Router and GasBuddy Analytics (no repos yet). Send URLs when they exist; the pill and button appear automatically.
-- [ ] **GasBuddy Analytics** is in the "Up next" row with only a title (planned, no repo, no description). Send a one-line description, tags and a year when you have them.
+- [ ] **GitHub links still missing** for Space Mining, Skill Router, Lumen and Fillsight (no repos yet). Send URLs when they exist; the pill and button appear automatically.
 - [ ] Space Mining is a collaborative project on your resume: send the collaborator name(s) if you want them credited on its page.
 - [ ] **Person Tracker** uses `harryliu1125/Person_Tracker`. Year (2025) and tags (Python, OpenCV, Raspberry Pi) come from your resume; status is set to completed. Confirm.
 - [ ] Write-ups per project (`body` in `src/content/projects.ts`) once the GitHub READMEs exist. Pages work without them.

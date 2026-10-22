@@ -144,13 +144,6 @@ test('experience: resume shows the image on phones', async ({ page }) => {
   await expect(page.locator('object')).toHaveCount(0)
 })
 
-test('planned project shows in Up next without a link', async ({ page }) => {
-  await page.goto('/projects')
-  const upNext = page.getByRole('region', { name: 'Up next' })
-  await expect(upNext.getByRole('heading', { name: 'GasBuddy Analytics' })).toBeVisible()
-  await expect(upNext.getByRole('link')).toHaveCount(0)
-})
-
 test('resume files are served', async ({ request }) => {
   const pdf = await request.get('/resume.pdf')
   expect(pdf.status()).toBe(200)
