@@ -2,6 +2,7 @@ import { Section } from '../../components/ui/Section'
 import { profile } from '../../content/profile'
 import { BasedInCard } from './BasedInCard'
 import { IntroCard } from './IntroCard'
+import { LatestProjectCard } from './LatestProjectCard'
 import { NowCard } from './NowCard'
 import { OffTheClockCard } from './OffTheClockCard'
 import { ToolboxCard } from './ToolboxCard'
@@ -15,6 +16,7 @@ export function AboutSection() {
         <BasedInCard />
         <ToolboxCard />
         <OffTheClockCard />
+        <LatestProjectCard />
       </div>
     </Section>
   )

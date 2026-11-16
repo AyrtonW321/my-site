@@ -10,6 +10,10 @@ export const getListed = (list: readonly Project[] = projects) =>
 export const getPlanned = (list: readonly Project[] = projects) =>
   list.filter((p) => p.status === 'planned')
 
+/** The content array is newest first, so the first completed project is the latest one. */
+export const getLatestFinished = (list: readonly Project[] = projects) =>
+  list.find((p) => p.status === 'done')
+
 /** Planned projects have no detail page. */
 export const getBySlug = (slug: string | undefined, list: readonly Project[] = projects) =>
   list.find((p) => p.slug === slug && p.status !== 'planned')
