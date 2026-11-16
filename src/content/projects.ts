@@ -1,3 +1,4 @@
+import f1FantasyThumbnail from '../assets/projects/f1-fantasy/thumbnail.webp'
 import type { Project } from './types'
 
 export const projects: readonly Project[] = [
@@ -24,11 +25,37 @@ export const projects: readonly Project[] = [
     links: { github: 'https://github.com/AyrtonW321/Fillsight' },
   },
   {
+    slug: 'f1-fantasy',
+    title: 'F1 Fantasy',
+    year: 2026,
+    status: 'done',
+    featured: true,
+    summary:
+      'Picks the best F1 Fantasy team each round, with an app to track my teams, swaps and chips.',
+    tags: ['Python', 'Streamlit', 'PuLP', 'pandas'],
+    thumbnail: f1FantasyThumbnail,
+    links: { github: 'https://github.com/AyrtonW321/f1-fantasy' },
+    body: [
+      {
+        heading: 'Why I built it',
+        paragraphs: [
+          'I wanted to make this program to help me get the best possible F1 Fantasy team and win my league.',
+        ],
+      },
+      {
+        heading: 'How I built it',
+        paragraphs: [
+          "It's written in Python. I rebuilt the game's scoring and checked it against every official session score since 2023. Predictions come from a simple average tested on past seasons, and an integer program (PuLP) picks the team within the budget, transfer and chip rules. A Streamlit app shows my teams and the suggested swaps.",
+        ],
+      },
+    ],
+  },
+  {
     slug: 'electronic-empire',
     title: 'Electronic Empire',
     year: 2026,
     status: 'wip',
-    featured: true,
+    featured: false,
     summary: 'A Roblox game about running a tech store.',
     tags: ['Luau', 'Roblox Studio'],
     links: {},
