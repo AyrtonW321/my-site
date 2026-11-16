@@ -5,6 +5,7 @@ import { formatDateRange, formatMonthYear } from './format'
 import {
   getBySlug,
   getFeatured,
+  getLatestFinished,
   getListed,
   getNext,
   getPlanned,
@@ -46,6 +47,11 @@ describe('projects selectors', () => {
   it('features at most 4 and never planned ones', () => {
     const featured = getFeatured(list)
     expect(featured.map((p) => p.slug)).toEqual(['a', 'b', 'e', 'f'])
+  })
+
+  it('picks the first completed project as the latest finished', () => {
+    expect(getLatestFinished(list)?.slug).toBe('a')
+    expect(getLatestFinished([mk('w', { status: 'wip' })])).toBeUndefined()
   })
 
   it('splits listed and planned', () => {
